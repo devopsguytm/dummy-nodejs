@@ -62,5 +62,4 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'ARO Cluster - Dev'
-        version: '4.5'
         cmd: 'oc get nodes'
