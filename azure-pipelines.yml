@@ -31,6 +31,7 @@ stages:
       inputs:
         scannerMode: 'CLI'
         configMode: 'manual'
+        SonarQube: 'ARO SonarQube'
         cliProjectKey: 'exo-frontend-$(Build.BuildId)'
         cliProjectName: 'exo-frontend-$(Build.BuildId)'
         cliSources: '.'
