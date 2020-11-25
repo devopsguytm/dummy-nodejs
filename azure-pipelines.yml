@@ -27,6 +27,23 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+
+- stage: Test
+  displayName: Test code
+  jobs:  
+  - job: Test
+    displayName: Test
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |          
+          echo 'Hello world'
+          ls -l 
+          pwd 
+          git --version
     - task: SonarQubePrepare@4
       inputs:
         scannerMode: 'CLI'
