@@ -62,9 +62,4 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'ARO Cluster - Dev'        
-        cmd: 'oc tag futureretailimageregistry.azurecr.io/dummy-nodejs:$(Build.BuildId) dummy-nodejs:$(Build.BuildId) --reference-policy=local -n honda-dev-env'
-    - task: oc-cmd@2
-      inputs:
-        connectionType: 'OpenShift Connection Service'
-        openshiftService: 'ARO Cluster - Dev'
-        cmd: 'oc tag honda-dev-env/dummy-nodejs:$(Build.BuildId) honda-dev-env/dummy-nodejs:latest'
+        cmd: 'oc tag futureretailimageregistry.azurecr.io/dummy-nodejs:$(Build.BuildId) dummy-nodejs:latest --reference-policy=local -n honda-dev-env'
