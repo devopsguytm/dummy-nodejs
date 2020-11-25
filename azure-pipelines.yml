@@ -42,7 +42,8 @@ stages:
         script: |          
           git clone https://github.com/vladsancira/dummy-nodejs.git
           git checkout -b master 
-
+          
+          which sonar-scanner
           
           echo $(System.PullRequest.PullRequestId)
 
