@@ -63,3 +63,20 @@ stages:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'ARO Cluster - Dev'        
         cmd: 'oc tag futureretailimageregistry.azurecr.io/dummy-nodejs:$(Build.BuildId) dummy-nodejs:latest --reference-policy=local -n honda-dev-env'
+
+- stage: Notification
+  displayName: Notification
+  jobs:  
+  - job: Notification
+    displayName: SLACK notification
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |                   
+          env 
+          echo "----------------------------------------------------------------------------"
+          echo  $(pipelines-variables.slack_notification_fe_dev)
+          
