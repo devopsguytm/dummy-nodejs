@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- main
+- master
 
 resources:
 - repo: self
@@ -27,3 +27,25 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+
+- stage: Test
+  displayName: Test code
+  jobs:  
+  - job: Test
+    displayName: Test
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+
+    - task: SonarQubePrepare@4
+      inputs:
+        scannerMode: 'CLI'
+        configMode: 'manual'
+        SonarQube: 'ARO SonarQube'
+        cliProjectKey: 'dummy-nodejs-master'
+        cliProjectName: 'dummy-nodejs-master'
+        cliSources: '.'
+    - task: SonarQubeAnalyze@4
+    - task: SonarQubePublish@4
+      inputs:
+        pollingTimeoutSec: '300'
