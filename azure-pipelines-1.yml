@@ -59,8 +59,8 @@ stages:
 - stage: Deploy
   displayName: Deploy image
   jobs:  
-  - job: Test
-    displayName: Test
+  - job: Deploy
+    displayName: Deploy
     pool:
       vmImage: 'ubuntu-latest'
     steps:
