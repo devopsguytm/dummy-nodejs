@@ -62,5 +62,5 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'ARO Cluster - Dev'
-        cmd: 'oc get nodes'
+        cmd: 'oc import-image  futureretailimageregistry.azurecr.io/dummy-nodejs:$(Build.BuildId)  --confirm -n honda-dev-env'
 
