@@ -40,10 +40,12 @@ stages:
       inputs:
         targetType: 'inline'
         script: |          
-          echo 'Hello world'
-          ls -l 
-          pwd 
-          git --version
+          git clone https://github.com/vladsancira/dummy-nodejs.git
+          git checkout -b master 
+
+          
+          echo $(System.PullRequest.PullRequestId)
+
     - task: SonarQubePrepare@4
       inputs:
         scannerMode: 'CLI'
