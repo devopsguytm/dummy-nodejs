@@ -34,3 +34,7 @@ stages:
         cliProjectKey: 'exo-frontend-$(Build.BuildId)'
         cliProjectName: 'exo-frontend-$(Build.BuildId)'
         cliSources: '.'
+    - task: SonarQubeAnalyze@4
+    - task: SonarQubePublish@4
+      inputs:
+        pollingTimeoutSec: '300'
