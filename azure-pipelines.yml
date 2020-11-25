@@ -24,13 +24,13 @@ stages:
       displayName: Build an image
       inputs:
         command: build
-        dockerfile: '$(Build.SourcesDirectory)/ci-cd-pipeline/tekton-kubernetes/Dockerfile'
+        dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
     - task: SonarQubePrepare@4
       inputs:
         scannerMode: 'CLI'
         configMode: 'manual'
-        cliProjectKey: 'exo-frontend-'
-        cliProjectName: 'exo-frontend-'
+        cliProjectKey: 'exo-frontend-$(Build.BuildId)'
+        cliProjectName: 'exo-frontend-$(Build.BuildId)'
         cliSources: '.'
