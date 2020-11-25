@@ -62,7 +62,7 @@ stages:
       inputs:
         connectionType: 'OpenShift Connection Service'
         openshiftService: 'ARO Cluster - Dev'        
-        cmd: 'oc tag futureretailimageregistry.azurecr.io/dummy-nodejs:$(Build.BuildId) dummy-nodejs:latest -n honda-dev-env'
+        cmd: 'oc tag futureretailimageregistry.azurecr.io/dummy-nodejs:$(Build.BuildId) dummy-nodejs:$(Build.BuildId) -n honda-dev-env'
     - task: oc-cmd@2
       inputs:
         connectionType: 'OpenShift Connection Service'
